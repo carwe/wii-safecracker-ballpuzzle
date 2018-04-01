@@ -162,16 +162,6 @@ def task_exec( task ):
                 return
             new_y -= 1
 
-
-
-        if   y==0: # map-end y-
-            return
-        elif game_map[x][y-1]['type']=='X': # hit wall w
-            task_add(x,y,'n')
-            task_add(x,y,'s')
-            task_add(x,y,'e')
-            return
-        task_add(x,y-1,'w')
     else: ####################################################
         raise Exception("task contains unknown direction " + direction)
     return
