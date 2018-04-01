@@ -105,34 +105,65 @@ def task_exec( task ):
 #        global todo,done
 #        todo,done=[],[]
 #        return
+
     if   direction == 'n': ####################################################
-        if   x==0: # map-end x-
-            return
-        elif game_map[x-1][y]['type']=='X': # hit wall n
-            task_add(x,y,'s')
-            task_add(x,y,'e')
-            task_add(x,y,'w')
-            return
-        task_add(x-1,y,'n')
+        new_x,new_y = x,y
+        while True:
+            if new_x==0:
+                return
+            if game_map[new_x-1][new_y]['type']=='~':
+                game_map[new_x-1][new_y]['visited']=True
+            if game_map[new_x-1][new_y]['type']=='X':
+                task_add(new_x,new_y,'s')
+                task_add(new_x,new_y,'e')
+                task_add(new_x,new_y,'w')
+                return
+            new_x -= 1
+
     elif direction == 's': ####################################################
-        if   x==len(game_map)-1: # map-end x+
-            return
-        elif game_map[x+1][y]['type']=='X': # hit wall s
-            task_add(x,y,'n')
-            task_add(x,y,'e')
-            task_add(x,y,'w')
-            return
-        task_add(x+1,y,'s')
+        new_x,new_y = x,y
+        while True:
+            if new_x==len(game_map)-1:
+                return
+            if game_map[new_x+1][new_y]['type']=='~':
+                game_map[new_x+1][new_y]['visited']=True
+            if game_map[new_x+1][new_y]['type']=='X':
+                task_add(new_x,new_y,'n')
+                task_add(new_x,new_y,'e')
+                task_add(new_x,new_y,'w')
+                return
+            new_x += 1
+
     elif direction == 'e': ####################################################
-        if   y==len(game_map[0])-1: # map-end y+
-            return
-        elif game_map[x][y+1]['type']=='X': # hit wall e
-            task_add(x,y,'n')
-            task_add(x,y,'s')
-            task_add(x,y,'w')
-            return
-        task_add(x,y+1,'e')
+        new_x,new_y = x,y
+        while True:
+            if new_y==len(game_map[0])-1:
+                return
+            if game_map[new_x][new_y+1]['type']=='~':
+                game_map[new_x][new_y+1]['visited']=True
+            if game_map[new_x][new_y+1]['type']=='X':
+                task_add(new_x,new_y,'n')
+                task_add(new_x,new_y,'s')
+                task_add(new_x,new_y,'w')
+                return
+            new_y += 1
+
     elif direction == 'w': ####################################################
+        new_x,new_y = x,y
+        while True:
+            if new_y==0:
+                return
+            if game_map[new_x][new_y-1]['type']=='~':
+                game_map[new_x][new_y-1]['visited']=True
+            if game_map[new_x][new_y-1]['type']=='X':
+                task_add(new_x,new_y,'n')
+                task_add(new_x,new_y,'s')
+                task_add(new_x,new_y,'e')
+                return
+            new_y -= 1
+
+
+
         if   y==0: # map-end y-
             return
         elif game_map[x][y-1]['type']=='X': # hit wall w
