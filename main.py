@@ -41,23 +41,22 @@ def map_print( game_map ):
     for line in game_map:
         for field in line:
             message = ""
-            if field['start'] == True:
-                message += "<i>"
 
-            if   field['visited']==False:
-                message += "<lw,r>"+field['type']+"</lw,r>"
+            if   field['start'] == True:
+                 message += "<lw,k>"+field['type']+"</lw,k>"
+
+            elif field['visited']==False:
+                 message += "<lw,r>"+field['type']+"</lw,r>"
 
             elif field['visited']==True and field['type']=='_':
-                message += "<lw,g>"+field['type']+"</lw,g>"
+                 message += "<lw,g>"+field['type']+"</lw,g>"
 
             elif field['visited']==True and field['type']=='~':
-                message += "<k,ly>"+field['type']+"</k,ly>"
+                 message += "<k,ly>"+field['type']+"</k,ly>"
 
             elif field['visited']==True and field['type']=='X':
-                message += "<lr,lw>"+field['type']+"</lr,lw>"
+                 message += "<lr,lw>"+field['type']+"</lr,lw>"
 
-            if field['start'] == True:
-                message += "</i>"
             ansiprint( message, end="" )
         print("")
     print("")
