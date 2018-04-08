@@ -86,7 +86,7 @@ def task_print( task ):
 def task_add (x,y,direction):
     global todo,done
     task = {'x':x, 'y':y, 'direction':direction}
-    if todo.count( task )>0 or done.count( task )>0: # duplicate rejected
+    if todo.count( task )>0 or done.count( task )>0: # duplicate detected
         return
     todo.append( task )
     return
@@ -98,12 +98,7 @@ def task_exec( task ):
     x,y,direction = task['x'],task['y'],task['direction']
     game_map[x][y]['visited']=True
     if game_map[x][y]['type']=='X':
-#        print("reached BLOCKED " + task_print( task ) )
         return
-#    if game_map[x][y]['type']=='~':
-#        global todo,done
-#        todo,done=[],[]
-#        return
 
     if   direction == 'n': ####################################################
         new_x,new_y = x,y
@@ -161,8 +156,6 @@ def task_exec( task ):
                 return
             new_y -= 1
 
-    else: ####################################################
-        raise Exception("task contains unknown direction " + direction)
     return
 
 
@@ -194,28 +187,14 @@ def init( start_coords ):
 
 def run():
     global todo, game_map
-#    i,j=0,0
     while len(todo) > 0:
         task_next()
-#        i=i+1
-#        if i>0:
-#            i=0
-#            map_print( game_map )
-#    map_print( game_map )
-#    print( map_count_hits( game_map ) )
     return
 
 
 start_coords={'x':5,'y':6}
 init( start_coords )
+print( 'start at x:{} y:{}'.format( start_coords['x'], start_coords['y'] ) )
 run()
+print( '{} TARGETs reached'.format(map_count_hits(game_map)) )
 map_print( game_map )
-
-#for x in range(0,20):
-#    for y in range(0,25):
-#        start_coords={'x':x,'y':y}
-#        init( start_coords )
-#        run()
-#        if map_count_hits( game_map ) == 3:
-#            print( start_coords, map_count_hits( game_map ) )
-#            map_print( game_map )
