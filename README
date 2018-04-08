@@ -1,0 +1,5 @@
+disclaimer: This is my first python project, containing a lot of mistakes on many levels. When you learn from it, just learn the good parts and skip the bad ;)
+
+about: An algorithm for finding a solution for one of the puzzles in the Wii-game "Safecracker". The puzzle is about moving a ball with four magnets - you press the button of one of the magnets, either up, down, left or right, and the ball moves until it hits an obstacle or falls out of the map. If it falls out of the map, it respawns at the initial spawn point. Task is to bring the ball on one of four fields containing holes.
+
+license: see file UNLICENSE
