@@ -196,5 +196,5 @@ start_coords={'x':5,'y':6}
 init( start_coords )
 print( 'start at x:{} y:{}'.format( start_coords['x'], start_coords['y'] ) )
 run()
-print( '{} TARGETs reached'.format(map_count_hits(game_map)) )
+print( '{} TARGETs reached with {} tasks'.format(map_count_hits(game_map),len(done)) )
 map_print( game_map )
