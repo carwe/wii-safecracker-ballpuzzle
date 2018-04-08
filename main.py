@@ -83,12 +83,19 @@ def task_print( task ):
     return str(task['x']) + " " + str(task['y']) + " " + task['direction']
 
 
-def task_add (x,y,direction):
+def task_add (x,y,direction,history=[]):
     global todo,done
-    task = {'x':x, 'y':y, 'direction':direction}
-    if todo.count( task )>0 or done.count( task )>0: # duplicate detected
-        return
-    todo.append( task )
+    task_new = {'x':x, 'y':y, 'direction':direction, 'history':history}
+
+    #testing for duplicates
+    for task_compared in todo:
+        if task_new['x']==task_compared['x'] and task_new['y']==task_compared['y'] and task_new['direction']==task_compared['direction']:
+            return
+    for task_compared in done:
+        if task_new['x']==task_compared['x'] and task_new['y']==task_compared['y'] and task_new['direction']==task_compared['direction']:
+            return
+
+    todo.append( task_new )
     return
 
 
