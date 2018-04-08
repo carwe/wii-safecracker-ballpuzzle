@@ -114,7 +114,6 @@ def task_exec( task ):
                 game_map[new_x-1][new_y]['visited']=True
                 print( 'reached TARGET @{},{} from {},{}'.format(new_x-1,new_y,x,y) )
             if game_map[new_x-1][new_y]['type']=='X':
-                task_add(new_x,new_y,'s')
                 task_add(new_x,new_y,'e')
                 task_add(new_x,new_y,'w')
                 return
@@ -129,7 +128,6 @@ def task_exec( task ):
                 game_map[new_x+1][new_y]['visited']=True
                 print( 'reached TARGET @{},{} from {},{}'.format(new_x+1,new_y,x,y) )
             if game_map[new_x+1][new_y]['type']=='X':
-                task_add(new_x,new_y,'n')
                 task_add(new_x,new_y,'e')
                 task_add(new_x,new_y,'w')
                 return
@@ -146,7 +144,6 @@ def task_exec( task ):
             if game_map[new_x][new_y+1]['type']=='X':
                 task_add(new_x,new_y,'n')
                 task_add(new_x,new_y,'s')
-                task_add(new_x,new_y,'w')
                 return
             new_y += 1
 
@@ -161,7 +158,6 @@ def task_exec( task ):
             if game_map[new_x][new_y-1]['type']=='X':
                 task_add(new_x,new_y,'n')
                 task_add(new_x,new_y,'s')
-                task_add(new_x,new_y,'e')
                 return
             new_y -= 1
 
